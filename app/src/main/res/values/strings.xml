@@ -1,12 +1,55 @@
 <resources>
-    <string name="app_name">ExIncidencies</string>
+    <string name="app_name">AppIncidencias</string>
 
-    <string-array name="selector">
+
+    //Menu
+    <string name="Añadir">Añadir</string>
+    <string name="Listar">Listar</string>
+    <string name="Eliminar">Eliminar</string>
+
+    //MainActivity Login
+
+    <string name="btnLogin">ENTER</string>
+    <string name="etUserName">Usuario</string>
+    <string name="etPsw">Contraseña</string>
+
+    //Añadir Incidencia
+
+    <string name="txtincidencia">Incidencia</string>
+    <string name="btnAñadirIncidencia">Añadir</string>
+
+    <string name="RemoveIncidences">Incidencias eliminadas</string>
+    <string name="BtnSettings">Opciones</string>
+    <string name="ChangeLng">Cambiar</string>
+
+    //Strings toast
+    <string name="toastCambiar">Idioma Cambiado</string>
+    <string name="IncorrectLogin">Valores Incorrectos</string>
+    <string name="UserLogged">Logeado como: </string>
+
+    //Incidences Status
+    <string name="FixedStatus">FIXED</string>
+    <string name="AsignedStatus">ASIGNED</string>
+    <string name="UnfixedStatus">UNFIXED</string>
+
+    <string name="IncTitulo">Titulo: </string>
+    <string name="IncID">ID: </string>
+    <string name="IncPrio">Prioridad: </string>
+    <string name="IncStatus">Status: </string>
+    <string name="IncDesc">Descripcion: </string>
+    <string name="IncDate">Date: </string>
+
+
+
+    //Spinner
+
+    <string-array name="Prioridad">
+        <item>Baja</item>
+        <item>Media</item>
         <item>Alta</item>
-        <item>Mitjana</item>
-        <item>Baixa</item>
     </string-array>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

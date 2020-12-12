@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Clases.LoginActivity"
+android:background="@drawable/fondotech">
+
+<!-- Here are the existing layout elements, now wrapped in
+     a CoordinatorLayout -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/LoginActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- …Toolbar, other layouts, other elements… -->
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginRight="130dp"
+        android:background="@drawable/custom_buton"
+        android:text="@string/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPsw" />
+
+    <EditText
+        android:id="@+id/etPsw"
+        android:layout_width="231dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/candado"
+        android:ems="10"
+        android:hint="@string/etPsw"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUserName" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/user"
+        android:ems="10"
+        android:hapticFeedbackEnabled="true"
+        android:inputType="textPersonName"
+        android:hint="@string/etUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+

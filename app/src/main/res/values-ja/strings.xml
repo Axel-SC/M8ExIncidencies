@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">インシデント</string>
+
+
+    //Menu
+    <string name="Añadir">追加</string>
+    <string name="Listar">リスト</string>
+    <string name="Eliminar">削除する</string>
+
+    //MainActivity Login
+
+    <string name="btnLogin">入る</string>
+    <string name="etUserName">ユーザー</string>
+    <string name="etPsw">パスワード</string>
+
+    //Añadir Incidencia
+
+    <string name="txtincidencia">入射</string>
+    <string name="btnAñadirIncidencia">追加</string>
+
+    <string name="RemoveIncidences">解消された問題</string>
+    <string name="BtnSettings">選択肢</string>
+    <string name="ChangeLng">変化する</string>
+
+    //Strings toast
+    <string name="toastCambiar">言語が変更されました</string>
+    <string name="IncorrectLogin">誤ったデータ</string>
+    <string name="UserLogged">として記録: </string>
+    //Spinner
+
+    <string-array name="Prioridad">
+        <item>低</item>
+        <item>中</item>
+        <item>高い</item>
+    </string-array>
+
+</resources>

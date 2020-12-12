@@ -7,24 +7,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import DB.IncidenciaContract.*;
-import static DB.IncidenciaContract.IncidenciaEntry.*;
-import androidx.annotation.Nullable;
-
-import com.example.exincidencies.Incidencia;
-
 import java.util.ArrayList;
-
+import static DB.IncidenciaContract.IncidenciaEntry.*;
 
 
 public class IncidenciaDBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "incidencies.db";
-    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + "(" +
-            IncidenciaEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            IncidenciaEntry.COLUMN_NAME_TITLE + "TEXT, " +
-            IncidenciaEntry.COLUMN_NAME_PRIORITY + " TEXT)";
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
+            + INC_TABLE_NAME + "("
+            + INC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + INC_NAME + " TEXT, "
+            + INC_PRIORITY + " TEXT, "
+            + INC_DESCRIPTION + " TEXT, "
+            + INC_STATUS+ " TEXT, "
+            + INC_DATE + " TEXT);";
 
 
     public IncidenciaDBHelper(Context context) {
@@ -42,40 +40,63 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertIncidencia(SQLiteDatabase db, Incidencia i){
+    public void insertIncidencia(SQLiteDatabase db, Incidence inc){
         //Check the bd is open
         if (db.isOpen()){
             //Creation of the register for insert object with the content values
             ContentValues values = new ContentValues();
-
             //Añado la incidencia y sus valores
-            values.put(IncidenciaEntry.COLUMN_NAME_TITLE, i.getTittle());
-            values.put(IncidenciaEntry.COLUMN_NAME_PRIORITY, i.getPrioritat());
 
-            db.insert(TABLE_NAME, null, values);
+            values.put(INC_NAME, inc.getTitle());
+            values.put(INC_PRIORITY, inc.getPriority());
+            values.put(INC_DATE, inc.getUnixDate());
+            values.put(INC_DESCRIPTION, inc.getDescription());
+            values.put(INC_STATUS, inc.getStatus());
+
+
+            db.insert(INC_TABLE_NAME, null, values);
         }else{
             Log.d("sql","Database is closed");
         }
     }
-    public ArrayList<Incidencia> getAllIncidencias(SQLiteDatabase db){
-        String query = "SELECT * FROM" + db;
-        ArrayList<Incidencia> listIncidencies = new ArrayList();
+    public ArrayList<Incidence> getAllIncidences(SQLiteDatabase db){
+        db = this.getReadableDatabase();
+        ArrayList<Incidence> listIncidences = new ArrayList();
 
         //Uso un cursor para seleccionar los registros
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         //Uso un iterador en el cursor para obtener todos los datos
-        while(cursor.moveToNext()){
-            String tittle = cursor.getString(cursor.getColumnIndex(IncidenciaEntry.COLUMN_NAME_TITLE));
-            String priority = cursor.getString(cursor.getColumnIndex(IncidenciaEntry.COLUMN_NAME_PRIORITY));
 
-            Incidencia incidencia = new Incidencia(tittle, priority);
-            listIncidencies.add(incidencia);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + INC_TABLE_NAME, null);
 
+        if(cursor.moveToFirst()){
+            do{
+                Incidence inc = new Incidence(cursor.getString(1), cursor.getString(2) );
+                inc.setDescription(cursor.getString(3));
+                inc.setStatus(cursor.getString(4));
+                inc.setID(cursor.getInt(0));
+                inc.setUnixDate(Long.parseLong(cursor.getString(5)));
+
+
+                listIncidences.add(inc);
+            }while (cursor.moveToNext());
         }
         cursor.close();
-        return listIncidencies;
-    } public void deleteEntries(SQLiteDatabase db){
-        db.execSQL("DELETE FROM " + TABLE_NAME);
+        return listIncidences;
+    }
+
+    public void deleteEntries(SQLiteDatabase db){
+        db.execSQL("DELETE FROM " + INC_TABLE_NAME);
+    }
+
+    public void dropTable(SQLiteDatabase db){
+        db.execSQL("DROP TABLE IF EXISTS " + INC_TABLE_NAME);
+    }
+
+
+    public static void updatePrio(SQLiteDatabase db, String prio, int incID) {
+
+        db.execSQL("UPDATE "+INC_TABLE_NAME+" SET status = "+"'"+prio+"' "+ "WHERE id = "+"'"+incID+"'");
+
     }
 }

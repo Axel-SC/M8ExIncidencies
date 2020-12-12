@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppIncidences</string>
+
+
+    //Menu
+    <string name="Añadir">Add</string>
+    <string name="Listar">List</string>
+    <string name="Eliminar">Remove</string>
+
+    //MainActivity Login
+
+    <string name="btnLogin">ENTER</string>
+    <string name="etUserName">User</string>
+    <string name="etPsw">Password</string>
+
+    //Añadir Incidencia
+
+    <string name="txtincidencia">Incidence</string>
+    <string name="btnAñadirIncidencia">Add</string>
+
+    <string name="RemoveIncidences">Incidences Removed</string>
+    <string name="BtnSettings">Settings</string>
+    <string name="ChangeLng">Switch</string>
+
+    //Strings toast
+    <string name="toastCambiar">Languaje changed</string>
+    <string name="IncorrectLogin">Incorrect values</string>
+    <string name="UserLogged">Logged as: </string>
+    //Spinner
+
+    <string-array name="Prioridad">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+</resources>

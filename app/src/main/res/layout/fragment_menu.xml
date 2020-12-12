@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu">
+    tools:context=".Fragments.Menu">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,20 +15,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Añadir" />
+            android:text="@string/Añadir" />
 
         <Button
             android:id="@+id/Listar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Listar" />
+            android:text="@string/Listar" />
 
         <Button
-            android:id="@+id/eliminar"
+            android:id="@+id/Eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eliminar" />
+            android:text="@string/Eliminar" />
+        <Button
+            android:id="@+id/BtnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/BtnSettings" />
     </LinearLayout>
 </FrameLayout>

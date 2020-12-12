@@ -2,21 +2,78 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
+    android:id="@+id/listLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListIncidencia">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="411dp"
-        android:layout_height="516dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".Fragments.ListIncidencia">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="101dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/itemListTitleInc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#33ccff"
+                android:paddingLeft="8dp"
+                android:text="Title"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/itemListID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="1"
+                android:background="#f05c79"
+                android:paddingLeft="8dp"
+                android:text="ID"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/itemListPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="1"
+                android:background="#ff944d"
+
+                android:paddingLeft="8dp"
+                android:text="Priority"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/itemListStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00CFBC"
+                android:paddingLeft="8dp"
+                android:text="Status"
+                android:textColor="#000000"
+                app:cornerRadius="@android:dimen/notification_large_icon_height" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
