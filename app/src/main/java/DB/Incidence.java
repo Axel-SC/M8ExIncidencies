@@ -42,7 +42,7 @@ public class Incidence {
     }
 
     public void setStatus(String statusID) {
-        this.status = status;
+        this.status = statusID;
     }
 
     public String getDescription() {

@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
+import android.app.Fragment;
 
 import android.text.Html;
 import android.util.Log;
@@ -47,7 +47,7 @@ public class Info_Incidences extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View viewInfo = inflater.inflate(R.layout.fragment_info__incidences, container, false);
-        dbHelper = new IncidenciaDBHelper(getContext());
+        dbHelper = new IncidenciaDBHelper(MainActivity.getInstance());
         db = dbHelper.getWritableDatabase();
 
         //Getting the values of the bundle
@@ -63,26 +63,61 @@ public class Info_Incidences extends Fragment{
 
 
         final Button btn_status = viewInfo.findViewById(R.id.btnChangeStatus);
+        btn_status.setText(incStatus);
+        refreshBtn(viewInfo, btn_status);
         btn_status.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch(incStatus) {
                     case "UNFIXED":
                         incStatus="FIXED";
-                        refreshBtn(viewInfo, btn_status);
-
                         break;
                     case "ASIGNED":
                         incStatus="UNFIXED";
-                        refreshBtn(viewInfo, btn_status);
                         break;
                     case "FIXED":
                         incStatus="ASIGNED";
-                        refreshBtn(viewInfo, btn_status);
-
                         break;
                 }
+                refreshBtn(viewInfo, btn_status);
+                dbHelper.updateColumn(db, "status", incStatus, incID);
 
+
+            }
+        }));
+
+
+        final Button btn_priority = viewInfo.findViewById(R.id.btnChangePrio);
+        btn_priority.setText(incPrio);
+        refreshPrio(viewInfo, btn_priority);
+        btn_priority.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch(incPrio) {
+                    case "Baja":
+                        incPrio="Media";
+                        break;
+                    case "Media":
+                        incPrio ="Alta";
+                        break;
+                    case "Alta":
+                        incPrio ="Baja";
+                        break;
+                }
+                refreshPrio(viewInfo, btn_priority);
+                dbHelper.updateColumn(db, "priority", incPrio, incID);
+
+
+            }
+        }));
+
+        final Button btn_delete = viewInfo.findViewById(R.id.btnDeleteInc);
+        btn_delete.setText(R.string.Delete);
+        btn_delete.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHelper.deleteSingleInc(db, incID);
+                Toast.makeText(MainActivity.getInstance(), R.string.IncRemoved, Toast.LENGTH_SHORT).show();
             }
         }));
 
@@ -90,12 +125,12 @@ public class Info_Incidences extends Fragment{
         return viewInfo;
     }
     public void refreshBtn(View v, Button statusBtn){
-        statusBtn = v.findViewById(R.id.btnChangeStatus);
+        TextView statusRefresh = v.findViewById(R.id.txt_Inc_Status);
+        statusRefresh.setText(getResources().getString(R.string.IncStatus)+" "+incStatus);
         switch(incStatus) {
             case "UNFIXED":
                 statusBtn.setText(getResources().getString(R.string.UnfixedStatus));
                 statusBtn.setBackgroundColor(getResources().getColor(R.color.soft_pinky));
-
                 break;
             case "ASIGNED":
                 statusBtn.setText(getResources().getString(R.string.AsignedStatus));
@@ -107,7 +142,23 @@ public class Info_Incidences extends Fragment{
                 break;
         }
 
-    }public void putInfo(View v, String title,  int id, String prio, String status, String desc, String date) {
+    }public void refreshPrio(View v, Button prioBtn){
+        TextView prioRefresh = v.findViewById(R.id.txt_Inc_Prio);
+        prioRefresh.setText(getResources().getString(R.string.IncPrio)+" "+incPrio);
+        switch(incPrio) {
+            case "Baja":
+                prioBtn.setText(getResources().getString(R.string.PrioBaja));
+                break;
+            case "Media":
+                prioBtn.setText(getResources().getString(R.string.PrioMedia));
+                break;
+            case "Alta":
+                prioBtn.setText(getResources().getString(R.string.PrioAlta));;
+                break;
+        }
+
+    }
+    public void putInfo(View v, String title,  int id, String prio, String status, String desc, String date) {
         TextView titlev = v.findViewById(R.id.txt_Inc_Name);
         titlev.setText(getResources().getString(R.string.IncTitulo)+" " +incTitle);
         TextView priov = v.findViewById(R.id.txt_Inc_Prio);
@@ -121,9 +172,6 @@ public class Info_Incidences extends Fragment{
         TextView datev = v.findViewById(R.id.txt_Inc_Date);
         datev.setText(getResources().getString(R.string.IncTitulo)+" "+incDate);
     }
-    public void refresh(){
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
-    }
+
 
 }

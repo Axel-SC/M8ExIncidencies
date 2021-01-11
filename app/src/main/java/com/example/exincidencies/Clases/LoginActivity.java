@@ -22,10 +22,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText textUsername;
     private EditText textPsw;
     private Button btnLogin;
+    private static LoginActivity loginContext;
     //Codigo Añadido
     SharedPreferences sPreferences;
     Configuration config;
-
+    public LoginActivity(){
+        loginContext = this;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +70,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    public void goToMain() {
-        Intent toMain = new Intent(this, MainActivity.class);
-        startActivity(toMain);
+    public static void goToMain() {
+        Intent toMain = new Intent(loginContext, MainActivity.class);
+        loginContext.startActivity(toMain);
     }
 
 }

@@ -75,7 +75,7 @@ public class AddIncidencia extends Fragment {
                 //Lo almaceno en la database
                 Incidence incidence = new Incidence(inc_title, nivel_prioridad);
                 incidence.setDescription(inc_desc);
-                incidence.setUnixDate(System.currentTimeMillis() / 1000);;
+                //Eliminado incidence.setUnixDate(System.currentTimeMillis() / 1000);;
                 dbHelper.insertIncidencia(db, incidence);
                 Toast.makeText(MainActivity.getInstance(),"Incidencia Añadida", Toast.LENGTH_SHORT).show();
             }

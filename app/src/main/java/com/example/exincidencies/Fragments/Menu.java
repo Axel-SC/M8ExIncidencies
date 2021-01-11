@@ -32,7 +32,7 @@ public class Menu extends Fragment {
     protected IncidenciaDBHelper dbHelper;
     protected SQLiteDatabase db;
 
-    private final int[] BTNMENU = {R.id.Añadir, R.id.Listar, R.id.Eliminar, R.id.BtnSettings};
+
 
     public Menu() {
         // Required empty public constructor

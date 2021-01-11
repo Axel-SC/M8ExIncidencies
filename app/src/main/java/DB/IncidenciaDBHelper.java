@@ -77,7 +77,7 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
                 inc.setID(cursor.getInt(0));
                 inc.setUnixDate(Long.parseLong(cursor.getString(5)));
 
-
+                Log.i("prova", "------------->" + cursor.getString(4));
                 listIncidences.add(inc);
             }while (cursor.moveToNext());
         }
@@ -88,15 +88,25 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
     public void deleteEntries(SQLiteDatabase db){
         db.execSQL("DELETE FROM " + INC_TABLE_NAME);
     }
+    public void deleteSingleInc(SQLiteDatabase db, int incID){
+        db.execSQL("DELETE FROM " + INC_TABLE_NAME+ " WHERE id = "+incID);
+    }
 
     public void dropTable(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + INC_TABLE_NAME);
     }
 
+    public static void updateColumn(SQLiteDatabase db, String column, String columnValue, int incID) {
+        String sql = "UPDATE "+INC_TABLE_NAME+" SET "+column+" = '" + columnValue + "' WHERE id = "+incID;
+        Log.i("prova", sql);
 
-    public static void updatePrio(SQLiteDatabase db, String prio, int incID) {
+        if (db.isOpen()){
 
-        db.execSQL("UPDATE "+INC_TABLE_NAME+" SET status = "+"'"+prio+"' "+ "WHERE id = "+"'"+incID+"'");
+            db.execSQL(sql);
+
+        }else{
+            Log.i("prova","Database is closed");
+        }
 
     }
 }

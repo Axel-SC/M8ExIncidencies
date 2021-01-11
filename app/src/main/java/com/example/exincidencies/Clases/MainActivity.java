@@ -75,4 +75,6 @@ public class MainActivity extends AppCompatActivity{
         sbLogged.getView().setBackgroundColor(Color.parseColor("#00CFBC"));
         sbLogged.show();
     }
+
+
 }

@@ -13,11 +13,18 @@
         android:id="@+id/Configuracion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondotechazul"
         android:orientation="vertical"
         android:tag="Cambiar Idiomas">
 
         <!-- …Toolbar, other layouts, other elements… -->
+
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/trianblue" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -47,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnToSpanish"
             app:srcCompat="@drawable/japan" />
@@ -56,11 +63,11 @@
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/btnToUk"
             app:srcCompat="@drawable/france" />
 
         <Button
@@ -69,8 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/custom_buton"
-            android:layout_marginTop="25dp"
             android:text="@string/ChangeLng"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -79,7 +86,7 @@
             android:id="@+id/btnToUk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
             android:background="@drawable/custom_buton"
@@ -93,23 +100,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/ChangeLng"
+            android:layout_marginTop="10dp"
             android:background="@drawable/custom_buton"
+            android:text="@string/ChangeLng"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btnToFrench"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
             android:background="@drawable/custom_buton"
             android:text="@string/ChangeLng"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btnRemovePref"
@@ -123,5 +134,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

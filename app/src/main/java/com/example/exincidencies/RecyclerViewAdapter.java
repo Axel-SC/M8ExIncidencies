@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.exincidencies.Clases.MainActivity;
@@ -50,10 +51,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         //Depends of the status it has a color background or another
-
+        Log.i("prova", array_incidencies.get(position).getStatus());
         switch(array_incidencies.get(position).getStatus()) {
             case "UNFIXED":
-                holder.incStatus.setBackgroundColor(context.getResources().getColor(R.color.pinky));
+                holder.incStatus.setBackgroundColor(context.getResources().getColor(R.color.soft_pinky));
                 break;
             case "ASIGNED":
                 holder.incStatus.setBackgroundColor(context.getResources().getColor(R.color.soft_orange));
@@ -79,8 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 info.setArguments(bundle);
                 //Need AppCompatActivity to use fragmentmanager with support manager, no funciona bien
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.listLayout, info).addToBackStack(RecyclerViewAdapter.class.getSimpleName()).commit();
-
+                activity.getFragmentManager().beginTransaction().replace(R.id.fragmentID, info).addToBackStack(RecyclerViewAdapter.class.getSimpleName()).commit();
             }
         });
 

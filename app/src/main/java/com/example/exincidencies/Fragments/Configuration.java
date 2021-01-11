@@ -14,8 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
+
 import java.util.Locale;
 
+import com.example.exincidencies.Clases.LoginActivity;
 import com.example.exincidencies.Clases.MainActivity;
 import com.example.exincidencies.R;
 
@@ -33,11 +37,11 @@ public class Configuration extends Fragment {
     protected String nivel_prioridad;
     protected static SharedPreferences sPreferences;
 
+
     public Configuration() {
         // Required empty public constructor
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,15 +90,19 @@ public class Configuration extends Fragment {
         });
         btn_removePref.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                /*
                 sPreferences.edit().remove("Language").commit();
                 sPreferences.edit().remove("User_Stored").commit();
                 sPreferences.edit().remove("User_Name").commit();
-                sPreferences.edit().remove("User_Psw").commit();
-                refresh();
+                sPreferences.edit().remove("User_Psw").commit();*/
+                sPreferences.edit().clear().commit();
+
+
             }
         });
         return opcionesView;
     }
+
 
     public void setLocaleLanguaje(String localeCode) {
         Locale locale = new Locale(localeCode);
@@ -103,15 +111,15 @@ public class Configuration extends Fragment {
         config.locale = locale;
         sPreferences.edit().putString("Language", localeCode).commit();
         MainActivity.getInstance().getResources().updateConfiguration(config, MainActivity.getInstance().getResources().getDisplayMetrics());
-        refresh();
+        refreshSettings();
     }
-    public void refresh (){
-        Intent i = (getActivity().getIntent());
-        startActivity(i);
+    public void refreshSettings (){
+
         Fragment currentFragment = new Configuration();
         FragmentManager menuManager = getFragmentManager();
         FragmentTransaction menuTransaction = menuManager.beginTransaction();
         menuTransaction.replace(R.id.fragmentID,currentFragment);
         menuTransaction.commit();
     }
+
 }

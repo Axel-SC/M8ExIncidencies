@@ -16,6 +16,7 @@
     //Añadir Incidencia
 
     <string name="txtincidencia">Incidencia</string>
+    <string name="IncRemoved">Incidencia Eliminada</string>
     <string name="btnAñadirIncidencia">Añadir</string>
 
     <string name="RemoveIncidences">Incidencias eliminadas</string>
@@ -38,7 +39,10 @@
     <string name="IncStatus">Status: </string>
     <string name="IncDesc">Descripcion: </string>
     <string name="IncDate">Date: </string>
-
+    <string name="PrioBaja">Baja</string>
+    <string name="PrioMedia">Media</string>
+    <string name="PrioAlta">Alta</string>
+    <string name="Delete">Borrar</string>
 
 
     //Spinner
